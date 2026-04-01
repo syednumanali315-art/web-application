@@ -1,0 +1,17 @@
+// package.json
+{
+  "name": "healthmonitor",
+  "scripts": { "start": "node server.js" },
+  "dependencies": {
+    "express": "^4.18.2",
+    "aws-sdk": "^2.1500.0"
+  }
+}
+# Dockerfile
+FROM node:18-alpine
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+EXPOSE 3000
+CMD ["node", "server.js"]
